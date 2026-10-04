@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "assemble",
+            "type": "shell",
+            "command": "perl ${workspaceFolder}/assembler/yasm.pl -r ${workspaceFolder}/dist/earthdefender-C500.bin  ${workspaceFolder}/src/earthdefender.asm"
+        },
+        {
+            "label": "bas2img",
+            "type": "shell",
+            "command": "bas2img --pc=1245 ${workspaceFolder}/src/earthdefender.bas ${workspaceFolder}/dist/earthdefender.img"
+        },
+        {
+            "label": "bin2wav(bas)",
+            "type": "shell",
+            "command": "bin2wav --pc=1245 --type=img ${workspaceFolder}/dist/earthdefender.img ${workspaceFolder}/wav/earthdefender-bas.wav",
+            "dependsOn": "bas2img"
+        },
+        {
+            "label": "bin2wav(bin)",
+            "type": "shell",
+            "command": "bin2wav --pc=1245 --type=bin --addr=0xc500 ${workspaceFolder}/dist/earthdefender-C500.bin ${workspaceFolder}/wav/earthdefender-bin-C500.wav",
+            "dependsOn": "assemble"
+        },
+    ]
+}
