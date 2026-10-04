@@ -31,6 +31,17 @@ It consists of BASIC and machine code. <br>
  
 <br>
 
+## Play on PokecomGo
+
+Please transfer the following two files to your smartphone and load them into the app.
+
+```
+/src/earthdefender.bas
+/dist/earthdefender-C500.bin
+```
+
+<br>
+
 ## Author
 
 Hitoshi Iwai (aburi6800)

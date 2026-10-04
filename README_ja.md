@@ -53,6 +53,17 @@ CLOAD
  
 <br>
 
+## PokecomGoでプレイする
+
+スマートフォンに以下に2ファイルを転送し、アプリでロードしてください。
+
+```
+/src/earthdefender.bas
+/dist/earthdefender-C500.bin
+```
+
+<br>
+
 ## 作者
 
 Hitoshi Iwai (aburi6800)
