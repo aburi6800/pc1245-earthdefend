@@ -6,7 +6,7 @@
         {
             "label": "assemble",
             "type": "shell",
-            "command": "perl ${workspaceFolder}/assembler/yasm.pl -r ${workspaceFolder}/dist/earthdefender-C500.bin  ${workspaceFolder}/src/earthdefender.asm"
+            "command": "perl ${workspaceFolder}/assembler/yasm.pl -r ${workspaceFolder}/dist/earthdefender-C500.bin ${workspaceFolder}/src/earthdefender.asm"
         },
         {
             "label": "bas2img",
@@ -24,6 +24,16 @@
             "type": "shell",
             "command": "bin2wav --pc=1245 --type=bin --addr=0xc500 ${workspaceFolder}/dist/earthdefender-C500.bin ${workspaceFolder}/wav/earthdefender-bin-C500.wav",
             "dependsOn": "assemble"
+        },
+        {
+            "label": "deploy(bas)",
+            "type": "shell",
+            "command": "adb push ${workspaceFolder}/src/earthdefender.bas /sdcard/share",
+        },
+        {
+            "label": "deploy(bin)",
+            "type": "shell",
+            "command": "adb push ${workspaceFolder}/dist/earthdefender-C500.bin /sdcard/share",
         },
     ]
 }
