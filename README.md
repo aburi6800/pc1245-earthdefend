@@ -56,6 +56,9 @@ October 4, 2026, ver. 1.00
 October 5, 2026, ver. 1.10
 - Minor fixes to screen display
 
+October 6, 2026, ver. 1.11
+- bug fixes.
+
 <br>
 
 ## Licence

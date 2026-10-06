@@ -34,6 +34,7 @@
             "label": "deploy(bin)",
             "type": "shell",
             "command": "adb push ${workspaceFolder}/dist/earthdefender-C500.bin /sdcard/share",
+            "dependsOn": "assemble"
         },
     ]
 }
