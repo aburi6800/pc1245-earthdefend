@@ -6,6 +6,10 @@
 
 <img src="./images/earthdefender.png">
 
+某誌風ドキュメントは[こちら](./doc/pc1245-earthdefender.pdf)
+
+<br>
+
 ## 概要
 
 1983年に日本のシャープから発売された、ポケットコンピュータ"PC-1245"のプログラムです。<br>
