@@ -17,6 +17,7 @@ It consists of BASIC and machine code. <br>
 
 - Enemies attack from the left and right while you aim at the Earth in the center of the screen.
 - Move the Earth Defense Satellite left and right to fire beams and destroy the enemies.
+- Since the beam only reaches two squares in front of the Earth Defense Satellite, lure it closer and defeat it.
 - The enemy will also attack with beams, so use your shield to defend yourself. However, you cannot fire beams while your shield is active.
 - Damage increases if the enemy reaches Earth or is hit by a beam attack.
 - If your damage reaches 100%, it's game over.
@@ -89,6 +90,10 @@ October 5, 2026, ver. 1.10
 
 October 6, 2026, ver. 1.11
 - bug fixes.
+
+October 11, 2026, ver. 1.20
+- Program improvements.
+- Limited the beam's range.
 
 <br>
 
