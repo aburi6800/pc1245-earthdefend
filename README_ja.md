@@ -6,7 +6,7 @@
 
 <img src="./images/earthdefender.png">
 
-某誌風ドキュメントは[こちら](./doc/pc1245-earthdefender.pdf)
+※某誌風ドキュメントは[こちら](./doc/pc1245-earthdefender.pdf)
 
 <br>
 
@@ -57,6 +57,18 @@ CLOAD
  
 <br>
 
+## 実機に転送する
+
+カセットインターフェースをポケットコンピュータに接続してから、PCのヘッドフォン端子に接続します。<br>
+ポケットコンピュータでロードコマンドを実行した後、PCで次のWAVファイルを再生することでロードできます。<br>
+
+```
+/wav/earthdefender-bas.wav
+/wav/earthdefender-bas-C500.wav
+```
+
+<br>
+
 ## PokecomGoでプレイする
 
 スマートフォンに以下に2ファイルを転送し、アプリでロードしてください。
@@ -65,6 +77,28 @@ CLOAD
 /src/earthdefender.bas
 /dist/earthdefender-C500.bin
 ```
+
+<br>
+
+
+<br>
+
+## PC-1251 Emulatorでプレイする
+
+以下のファイルを、PC-1251 Emulatorインストールディレクトリの`programs`ディレクトリにコピーします。
+
+```
+/src/earthdefender.bas
+/dist/earthdefender-C500.bin
+```
+
+`/src/earthdefender.bas`に以下の行を先頭に追加します。
+
+```
+# bin: earthdefender-c500.bin &C500
+```
+
+PC-1251 Emulatorを起動し、[Ctrl]+[O]で選択すると実行されます。
 
 <br>
 
@@ -97,5 +131,6 @@ MIT Licence
 
 - [SC61860 Asembler YASM61860](https://www.oit.ac.jp/labs/rd/rssrv/kobayashi-lab/~yagshi/old_web/misc/pocketcom/yasm.html)
 - [Pocket Tools](http://pocket.free.fr/html/soft/pocket-tools_e.html)
-- [Pokecom Go](https://digihori.jimdofree.com/index/emulator/)
 - [Genymotion](https://www.genymotion.com/)
+- [Pokecom Go](https://digihori.jimdofree.com/index/emulator/)
+- [PC-1251 Emulator](https://github.com/woriguchi/pc1251-emulator/tree/main)
