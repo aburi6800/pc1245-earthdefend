@@ -14,27 +14,45 @@
             "command": "bas2img --pc=1245 ${workspaceFolder}/src/earthdefender.bas ${workspaceFolder}/dist/earthdefender.img"
         },
         {
-            "label": "bin2wav(bas)",
+            "label": "make wav file(bas)",
             "type": "shell",
             "command": "bin2wav --pc=1245 --type=img ${workspaceFolder}/dist/earthdefender.img ${workspaceFolder}/wav/earthdefender-bas.wav",
             "dependsOn": "bas2img"
         },
         {
-            "label": "bin2wav(bin)",
+            "label": "make wav file(bin)",
             "type": "shell",
             "command": "bin2wav --pc=1245 --type=bin --addr=0xc500 ${workspaceFolder}/dist/earthdefender-C500.bin ${workspaceFolder}/wav/earthdefender-bin-C500.wav",
             "dependsOn": "assemble"
         },
         {
-            "label": "deploy(bas)",
+            "label": "deploy to PokecomGo(bas)",
             "type": "shell",
             "command": "adb push ${workspaceFolder}/src/earthdefender.bas /sdcard/share",
         },
         {
-            "label": "deploy(bin)",
+            "label": "deploy to PokecomGo(bin)",
             "type": "shell",
             "command": "adb push ${workspaceFolder}/dist/earthdefender-C500.bin /sdcard/share",
             "dependsOn": "assemble"
         },
+        {
+            "label": "install to PC-1251 Emulator(bin)",
+            "type": "shell",
+            "command": "set -a; source ${workspaceFolder}/.vscode/tasks.env; set +a; cp $BIN_FILEPATH/$BIN_FILENAME $PC1251EMU_HOME/programs/BIN_FILEMAME",
+            "dependsOn": "assemble"
+        },
+        {
+            "label": "install to PC-1251 Emulator(bas)",
+            "type": "shell",
+            "command": "set -a; source ${workspaceFolder}/.vscode/tasks.env; set +a; { echo '# title: EARTH DEFENDER'; echo '# bin: earthdefender-c500.bin &C500'; cat $BAS_FILEPATH/$BAS_FILENAME;} > $PC1251EMU_HOME/programs/$BAS_FILENAME",
+            "dependsOn": "install to PC-1251 Emulator(bin)"
+        },
+        {
+            "label": "Start PC-1251 Emulator",
+            "type": "shell",
+            "command": "set -a; source ${workspaceFolder}/.vscode/tasks.env; set +a; cd $PC1251EMU_HOME; uv run pc1251 --fresh --model 1245",
+            "dependsOn": "install to PC-1251 Emulator(bas)"
+        },   
     ]
 }
