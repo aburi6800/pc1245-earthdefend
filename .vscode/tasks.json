@@ -52,7 +52,6 @@
             "label": "Start PC-1251 Emulator",
             "type": "shell",
             "command": "set -a; source ${workspaceFolder}/.vscode/tasks.env; set +a; cd $PC1251EMU_HOME; uv run pc1251 --fresh --model 1245",
-            "dependsOn": "install to PC-1251 Emulator(bas)"
         },   
     ]
 }
