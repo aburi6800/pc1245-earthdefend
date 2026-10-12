@@ -32,14 +32,31 @@ It consists of BASIC and machine code. <br>
 
 <br>
 
-## Transfer to the actual device
+## Loading to the real machine
 
-Connect the cassette interface to the pocket computer and then connect it to the PC.<br>
-After running the load command on the pocket computer, you can load it by playing the following WAV file on the PC.<br>
+Connect the cassette interface to the Pocket Computer, then connect it to the PC's headphone jack. <br>
+On the Pocket Computer, use the following command to enter machine language program loading mode. <br>
+
+```
+CLOADM &C500
+```
+
+You can load the program by playing the following WAV file on your PC. <br>
+
+```
+/wav/earthdefender-bin-C500.wav
+```
+
+Next, use the following command on the pocket computer to enter BASIC program load mode. <br>
+
+```
+CLOAD
+```
+
+You can load the program by playing the following WAV file on your PC. <br>
 
 ```
 /wav/earthdefender-bas.wav
-/wav/earthdefender-bas-C500.wav
 ```
 
 <br>
@@ -57,17 +74,17 @@ Please transfer the following two files to your smartphone and load them into th
 
 ## Play on PC-1251 Emulator
 
-Copy the following file to the `programs` directory in the PC-1251 Emulator installation folder.
+Copy the following file to the `~/.pc1251/programs` directory.
 
 ```
 /src/earthdefender.bas
-/dist/earthdefender-C500.bin
+/dist/earthdefender.bin
 ```
 
 Add the following line to the top of `/src/earthdefender.bas`.
 
 ```
-# bin: earthdefender-c500.bin &C500
+# bin: earthdefender.bin &C500
 ```
 
 Start the PC-1251 Emulator, and it will run when you select it with [Ctrl]+[O].

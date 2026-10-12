@@ -6,52 +6,51 @@
         {
             "label": "assemble",
             "type": "shell",
-            "command": "perl ${workspaceFolder}/assembler/yasm.pl -r ${workspaceFolder}/dist/earthdefender-C500.bin ${workspaceFolder}/src/earthdefender.asm"
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; perl ${workspaceFolder}/assembler/yasm.pl -r ${workspaceFolder}/dist/$PRODUCT_NAME.bin ${workspaceFolder}/src/$PRODUCT_NAME.asm"
         },
         {
             "label": "bas2img",
             "type": "shell",
-            "command": "bas2img --pc=1245 ${workspaceFolder}/src/earthdefender.bas ${workspaceFolder}/dist/earthdefender.img"
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; bas2img --pc=1245 ${workspaceFolder}/src/$PRODUCT_NAME.bas ${workspaceFolder}/dist/$PRODUCT_NAME.img"
         },
         {
             "label": "make wav file(bas)",
             "type": "shell",
-            "command": "bin2wav --pc=1245 --type=img ${workspaceFolder}/dist/earthdefender.img ${workspaceFolder}/wav/earthdefender-bas.wav",
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; bin2wav --pc=1245 --type=img ${workspaceFolder}/dist/$PRODUCT_NAME.img ${workspaceFolder}/wav/$PRODUCT_NAME-bas.wav",
             "dependsOn": "bas2img"
         },
         {
             "label": "make wav file(bin)",
             "type": "shell",
-            "command": "bin2wav --pc=1245 --type=bin --addr=0xc500 ${workspaceFolder}/dist/earthdefender-C500.bin ${workspaceFolder}/wav/earthdefender-bin-C500.wav",
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; bin2wav --pc=1245 --type=bin --addr=0xc500 ${workspaceFolder}/dist/$PRODUCT_NAME.bin ${workspaceFolder}/wav/$PRODUCT_NAME-bin-C500.wav",
             "dependsOn": "assemble"
         },
         {
             "label": "deploy to PokecomGo(bas)",
             "type": "shell",
-            "command": "adb push ${workspaceFolder}/src/earthdefender.bas /sdcard/share",
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; adb push ${workspaceFolder}/src/$PRODUCT_NAME.bas /sdcard/share",
         },
         {
             "label": "deploy to PokecomGo(bin)",
             "type": "shell",
-            "command": "adb push ${workspaceFolder}/dist/earthdefender-C500.bin /sdcard/share",
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; adb push ${workspaceFolder}/dist/$PRODUCT_NAME.bin /sdcard/share/$PRODUCT_NAME-C500.bin",
             "dependsOn": "assemble"
         },
         {
             "label": "install to PC-1251 Emulator(bin)",
             "type": "shell",
-            "command": "set -a; source ${workspaceFolder}/.vscode/tasks.env; set +a; cp $BIN_FILEPATH/$BIN_FILENAME $PC1251EMU_HOME/programs/BIN_FILEMAME",
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; cp dist/$PRODUCT_NAME.bin ~/.pc1251/programs/$PRODUCT_NAME.bin",
             "dependsOn": "assemble"
         },
         {
             "label": "install to PC-1251 Emulator(bas)",
             "type": "shell",
-            "command": "set -a; source ${workspaceFolder}/.vscode/tasks.env; set +a; { echo '# title: EARTH DEFENDER'; echo '# bin: earthdefender-c500.bin &C500'; cat $BAS_FILEPATH/$BAS_FILENAME;} > $PC1251EMU_HOME/programs/$BAS_FILENAME",
-            "dependsOn": "install to PC-1251 Emulator(bin)"
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; { echo '# title: '$PRODUCT_NAME; echo '# bin: ' $PRODUCT_NAME.bin ' &C500'; cat src/$PRODUCT_NAME.bas;} > ~/.pc1251/programs/$PRODUCT_NAME.bas",
         },
         {
             "label": "Start PC-1251 Emulator",
             "type": "shell",
-            "command": "set -a; source ${workspaceFolder}/.vscode/tasks.env; set +a; cd $PC1251EMU_HOME; uv run pc1251 --fresh --model 1245",
+            "command": "source ${workspaceFolder}/.vscode/tasks.env; set +a; cd $PC1251EMU_HOME; uv run pc1251 --fresh --model 1245",
         },   
     ]
 }

@@ -57,14 +57,31 @@ CLOAD
  
 <br>
 
-## 実機に転送する
+## 実機でロードする
 
-カセットインターフェースをポケットコンピュータに接続してから、PCのヘッドフォン端子に接続します。<br>
-ポケットコンピュータでロードコマンドを実行した後、PCで次のWAVファイルを再生することでロードできます。<br>
+カセットインターフェースをポケットコンピュータに接続してから、PCのヘッドフォン端子と接続します。<br>
+ポケットコンピュータで以下コマンドでマシン語プログラムのロード状態にしてください。<br>
+
+```
+CLOADM &C500
+```
+
+PCで次のWAVファイルを再生することでロードできます。<br>
+
+```
+/wav/earthdefender-bin-C500.wav
+```
+
+続いて、ポケットコンピュータで以下コマンドでBASICプログラムのロード状態にしてください。<br>
+
+```
+CLOAD
+```
+
+PCで次のWAVファイルを再生することでロードできます。<br>
 
 ```
 /wav/earthdefender-bas.wav
-/wav/earthdefender-bas-C500.wav
 ```
 
 <br>
@@ -75,8 +92,10 @@ CLOAD
 
 ```
 /src/earthdefender.bas
-/dist/earthdefender-C500.bin
+/dist/earthdefender.bin
 ```
+
+※.binファイルを`earthdefender-C500.bin`としておくと、ロード時に自動で開始アドレスが設定されます。
 
 <br>
 
@@ -85,17 +104,17 @@ CLOAD
 
 ## PC-1251 Emulatorでプレイする
 
-以下のファイルを、PC-1251 Emulatorインストールディレクトリの`programs`ディレクトリにコピーします。
+以下のファイルを、`~/.pc1251/programs`ディレクトリにコピーします。
 
 ```
 /src/earthdefender.bas
-/dist/earthdefender-C500.bin
+/dist/earthdefender.bin
 ```
 
 `/src/earthdefender.bas`に以下の行を先頭に追加します。
 
 ```
-# bin: earthdefender-c500.bin &C500
+# bin: earthdefender.bin &C500
 ```
 
 PC-1251 Emulatorを起動し、[Ctrl]+[O]で選択すると実行されます。
